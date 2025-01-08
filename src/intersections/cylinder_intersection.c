@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 14:42:41 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/12/27 14:43:40 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/08 21:50:59 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ static bool	check_cylinder_caps(const t_ray *ray, t_shape *shape,
 	return (intersected);
 }
 
+//checks whether a given ray intersects with a cylindrical shape and records the intersection
+//times if they occur within the bounds of the cylinder's height.
 static bool	add_cylinder_intersections(t_shape *shape, const t_ray *ray,
 		t_intersections *xs, double *ts)
 {
@@ -63,7 +65,9 @@ static bool	add_cylinder_intersections(t_shape *shape, const t_ray *ray,
 	intersected = false;
 	if (ts[0] > ts[1])
 		ft_swapd(&ts[0], &ts[1]);
+	//Calculate Intersection Y-Coordinates:
 	y0 = ray->origin.y + ts[0] * ray->dir.y;
+	//Check Cylinder Height Bounds:
 	if (y0 > (-shape->props.height / 2) && y0 < (shape->props.height / 2))
 	{
 		xs->arr[xs->count].time = ts[0];
@@ -72,6 +76,7 @@ static bool	add_cylinder_intersections(t_shape *shape, const t_ray *ray,
 		intersected = true;
 	}
 	y1 = ray->origin.y + ts[1] * ray->dir.y;
+	//Record Valid Intersections:
 	if (y1 > (-shape->props.height / 2) && y1 < (shape->props.height / 2))
 	{
 		xs->arr[xs->count].time = ts[1];
@@ -91,7 +96,11 @@ bool	intersect_cylinder(const t_ray *ray, t_shape *shape,
 	double	ts[2];
 	double	discriminant;
 
+	//check the intersection with cap
 	intersected = check_cylinder_caps(ray, shape, xs);
+	//If a is close to zero (i.e., the ray is moving only along the y-axis),
+	//it means the ray is parallel to the cylinder, and there’s no intersection. 
+	//In that case, the function returns early.
 	a = ray->dir.x * ray->dir.x + ray->dir.z * ray->dir.z;
 	if (fabs(a) < 0.0001)
 		return (intersected);

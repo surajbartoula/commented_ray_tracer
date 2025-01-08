@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 14:51:29 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/12/27 14:51:55 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/08 21:55:11 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static bool	add_cone_intersections(t_shape *shape, const t_ray *ray,
 	intersected = false;
 	if (ts[0] > ts[1])
 		ft_swapd(&ts[0], &ts[1]);
+		//P = O + tD
 	y0 = ray->origin.y + ts[0] * ray->dir.y;
 	if (y0 > 0 && y0 < ((1.0 / 2)))
 	{

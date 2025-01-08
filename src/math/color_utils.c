@@ -6,12 +6,13 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 13:14:29 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/05 18:43:04 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/08 15:21:59 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/miniRT.h"
 
+//blend colors with mix
 int	mix_color(int c1, int c2, double mix)
 {
 	int				r;
@@ -60,6 +61,7 @@ unsigned int	create_mlx_color(t_color *color)
 		| clamp_color(color->g) << 8 | clamp_color(color->b));
 }
 
+//convert hex color to t_color with value between 0-1 that's why divide by 255
 t_color	int_to_color(int hex_color)
 {
 	t_color	color;
@@ -69,4 +71,4 @@ t_color	int_to_color(int hex_color)
 	color.g = ((unsigned char *)&hex_color)[1] / 255.0f;
 	color.b = ((unsigned char *)&hex_color)[0] / 255.0f;
 	return (color);
-}
+}vbdf
