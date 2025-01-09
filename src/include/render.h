@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 20:40:39 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/12/29 22:43:39 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/08 10:24:01 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ typedef struct s_intersections	t_intersections;
 
 typedef struct s_thread_data
 {
-	int		tid;
-	int		y_start;
-	int		y_end;
-	int		y_scale_start;
-	int		y_scale_end;
+	int		tid; //thread id
+	int		y_start; //starting y-coordinate for the thread's task
+	int		y_end; //Ending y-coordinate for the thread's task
+	int		y_scale_start; //Starting scaled Y-coordinate
+	int		y_scale_end; //Ending scaled Y-coordinate
 	int		max_tid;
-	int		height;
+	int		height; //height of the rendering area or task domain.
 	int		width;
 	char	*addr;
 	t_scene	*scene;

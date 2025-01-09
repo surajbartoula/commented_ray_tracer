@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 18:33:40 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/02 16:16:54 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/08 15:45:37 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	fill_skippedpixelh(double x, double y, t_thread_data *tdata, int th)
 	}
 }
 
+//Process vertical pixels to handle skipped pixel by either supersampling or interpolating
+//color based on a threeshold for color differences.
 void	fill_skippedpixelv(double x, double y, t_thread_data *tdata, int th)
 {
 	int				i;
@@ -52,6 +54,8 @@ void	fill_skippedpixelv(double x, double y, t_thread_data *tdata, int th)
 	j = get_color(tdata, x, y + 2);
 	if (color_difference(i, j) > th)
 	{
+		//Supersampling typically involves sampling multiple sub-pixels within a pixel to 
+		//smooth out color gradients and reduce artifacts like aliasing.
 		super_sample_pixel(x, y - 1, &arr, tdata);
 		super_sample_pixel(x, y, &arr, tdata);
 		super_sample_pixel(x, y + 1, &arr, tdata);

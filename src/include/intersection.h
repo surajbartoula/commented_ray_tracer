@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:15:09 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/12/28 12:26:58 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/08 18:40:11 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,18 @@ struct s_ray
 	t_vector	dir;
 };
 
+//p = o + t.D
 typedef struct s_intersect		t_intersection;
 struct s_intersect
-{
-	double		time;
+{//
+	double		time; //t along the ray at which the intersection occurs. Smaller t means the intersection is closer to the ray's origin.
 	t_shape		*shape;
 	t_vector	point;
-	t_vector	normal;
+	t_vector	normal; //The normal vector at the intersection point on the surface of the shape
 	t_vector	eye;
-	t_vector	over_point;
-	t_vector	reflect_vec;
-	bool		inside;
+	t_vector	over_point; //A small offset of the intersection point along the normal direction
+	t_vector	reflect_vec; //reflected vector calculated at the intersection point. reflect_vec = D - 2.(D.N).N. D is incident direction vector and N is surface normal
+	bool		inside; //Indicates whether the intersection occurs inside the shape
 };
 
 typedef struct s_intersections	t_intersections;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transformations.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: allan <allan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 14:43:05 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/04 11:25:02 by allan            ###   ########.fr       */
+/*   Updated: 2025/01/08 18:08:50 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 bool	intersect(t_shape *shape, const t_ray *ray, t_intersections *xs)
 {
 	t_ray	transf_ray;
-
+//intersection array is declared as array of 200 that's the reason we cannot go beyod 200
 	if (xs->count >= 200)
 		return (false);
 	if (shape->type == SPHERE)

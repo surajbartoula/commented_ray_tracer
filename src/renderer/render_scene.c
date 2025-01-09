@@ -6,7 +6,7 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 19:02:22 by sbartoul          #+#    #+#             */
-/*   Updated: 2025/01/02 19:45:09 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:54:00 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,9 @@ void	*renderwith_threads(t_thread_data *tdata)
 		}
 		y += 3;
 	}
+	//Higher Thresholds (e.g., 50): Reduce the number of supersampled pixels, improving performance but potentially leaving visible artifacts.
+	//Lower Thresholds (e.g., 10): Increase the number of supersampled pixels, enhancing quality but increasing computational overhead.
+	//25 is a reasonable compromise that balances rendering quality with performance.
 	fill_h(tdata, 25);
 	fill_v(tdata, 25);
 	return (NULL);

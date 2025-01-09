@@ -6,12 +6,14 @@
 /*   By: sbartoul <sbartoul@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 10:12:59 by sbartoul          #+#    #+#             */
-/*   Updated: 2024/12/26 18:07:44 by sbartoul         ###   ########.fr       */
+/*   Updated: 2025/01/08 12:17:33 by sbartoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/miniRT.h"
 
+//Generates a ray originating from a camera and passing through a pixel in 3d space.
+//Computes the direction of the ray based on the camera's position and pixel's coordinates.
 void	ray_from_cam(t_ray *ray, const t_camera *cam, double x, double y)
 {
 	double		world_x;
